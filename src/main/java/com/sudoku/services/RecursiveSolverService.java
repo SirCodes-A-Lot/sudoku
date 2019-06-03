@@ -25,7 +25,7 @@ public class RecursiveSolverService {
 			board.setSolved(true);
 			//Slice and dice
 			
-			//Only option
+			//exclusiveOptions
 			
 			//if progress made
 			return solveRecursively(board);

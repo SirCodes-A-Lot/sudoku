@@ -8,6 +8,8 @@ public class Board {
 	
 	boolean isSolved = false;
 	
+	boolean isUnsolvable = false;
+	
 	public Board(ArrayList<ArrayList<Square>> squaresList) {
 		this.squaresList = squaresList;
 	}
@@ -38,6 +40,14 @@ public class Board {
 
 	public void setSolved(boolean isSolved) {
 		this.isSolved = isSolved;
+	}
+
+	public boolean isUnsolvable() {
+		return isUnsolvable;
+	}
+
+	public void setUnsolvable(boolean isUnsolvable) {
+		this.isUnsolvable = isUnsolvable;
 	}
 
 	public String toString () {
