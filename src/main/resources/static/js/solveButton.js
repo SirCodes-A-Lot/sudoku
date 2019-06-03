@@ -10,7 +10,7 @@ var solveSudoku = function() {
 		type : "POST",
 		data : JSON.stringify(getSudokuGridData()),
 		contentType : "application/json",
-		dataType : 'json',
+		dataType : "json",
 		url : window.location + "solver",
 		success : function(result) {
 			console.log(result)

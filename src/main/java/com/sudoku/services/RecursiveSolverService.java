@@ -1,0 +1,34 @@
+package com.sudoku.services;
+
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Service;
+
+import boardObjects.Board;
+
+@Service
+public class RecursiveSolverService {
+	
+	public ArrayList<String> solveBoardFromStringArray(ArrayList<String> inputBoardValues) {
+		Board board = new Board();
+		board.setBoardFromListOfStringValues(inputBoardValues);
+		solveRecursively(board);
+		ArrayList<String> outputBoardValues = board.getBoardAsListOfStringValues();
+		return outputBoardValues;
+	}
+
+	private Board solveRecursively(Board board) {
+		if (board.isSolved()) {
+			return board;
+		} else {
+			//TODO do other logic delete line below
+			board.setSolved(true);
+			//Slice and dice
+			
+			//Only option
+			
+			//if progress made
+			return solveRecursively(board);
+		}
+	}
+}

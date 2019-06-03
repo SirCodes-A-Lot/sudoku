@@ -32,6 +32,24 @@ public class Board {
 			}
 		}
 	}
+	
+	public boolean isSolved() {
+		return isSolved;
+	}
+
+	public void setSolved(boolean isSolved) {
+		this.isSolved = isSolved;
+	}
+
+	public String toString () {
+		return "here is the board";
+	}
 	//TODO finish toString and get row, col, block
 	//public void toString
+
+	public ArrayList<String> getBoardAsListOfStringValues() {
+		ArrayList<String> boardValues = new ArrayList<>();
+		
+		return boardValues;
+	}
 }
