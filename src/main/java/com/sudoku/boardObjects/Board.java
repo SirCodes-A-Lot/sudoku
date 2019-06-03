@@ -60,7 +60,7 @@ public class Board {
 	
 	public ArrayList<Square> getColumn (int columnNumber) {
 		ArrayList<Square> column = new ArrayList<>();
-		for (int rowNumber = 0; rowNumber < squaresList.size(); rowNumber++) {
+		for (int rowNumber = 0; rowNumber < 9; rowNumber++) {
 			column.add(squaresList.get(rowNumber).get(columnNumber));
 		}
 		return column;
@@ -76,12 +76,18 @@ public class Board {
 		}
 		return box;
 	}
-	//TODO finish toString and get row, col, block
-	//public void toString
+	
+	public Square getSquare(int rowNumber, int columnNumber) {
+		return squaresList.get(rowNumber).get(columnNumber);
+	}
 
 	public ArrayList<String> getBoardAsListOfStringValues() {
 		ArrayList<String> boardValues = new ArrayList<>();
-		
+		for (int rowNumber = 0; rowNumber < 9; rowNumber++) {
+			for (int columnNumber = 0; columnNumber < 9; columnNumber++) {
+				boardValues.add(Integer.toString(getSquare(rowNumber, columnNumber).value));
+			}
+		}
 		return boardValues;
 	}
 }
