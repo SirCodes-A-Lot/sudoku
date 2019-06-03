@@ -1,4 +1,4 @@
-package boardObjects;
+package com.sudoku.boardObjects;
 
 import java.util.ArrayList;
 

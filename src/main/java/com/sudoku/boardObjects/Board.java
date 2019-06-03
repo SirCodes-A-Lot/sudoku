@@ -1,4 +1,4 @@
-package boardObjects;
+package com.sudoku.boardObjects;
 
 import java.util.ArrayList;
 
@@ -43,6 +43,29 @@ public class Board {
 
 	public String toString () {
 		return "here is the board";
+	}
+	
+	public ArrayList<Square> getRow (int rowNumber) {
+		return squaresList.get(rowNumber);
+	}
+	
+	public ArrayList<Square> getColumn (int columnNumber) {
+		ArrayList<Square> column = new ArrayList<>();
+		for (int rowNumber = 0; rowNumber < squaresList.size(); rowNumber++) {
+			column.add(squaresList.get(rowNumber).get(columnNumber));
+		}
+		return column;
+	}
+	
+	public ArrayList<Square> getBox (int startRow, int startColumn) {
+		ArrayList<Square> box = new ArrayList<>();
+		for (int rowNumber = startRow; rowNumber < startRow + 3; rowNumber++) {
+			ArrayList<Square> row = squaresList.get(rowNumber);
+			for (int columnNumber = startColumn; columnNumber < startColumn + 3; startColumn++) {
+				box.add(row.get(columnNumber));
+			}
+		}
+		return box;
 	}
 	//TODO finish toString and get row, col, block
 	//public void toString

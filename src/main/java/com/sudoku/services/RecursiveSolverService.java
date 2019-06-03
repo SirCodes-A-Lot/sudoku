@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
-import boardObjects.Board;
+import com.sudoku.boardObjects.Board;
 
 @Service
 public class RecursiveSolverService {
