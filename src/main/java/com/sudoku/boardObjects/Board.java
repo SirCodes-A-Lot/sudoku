@@ -10,7 +10,6 @@ public class Board {
 	
 	public Board(ArrayList<ArrayList<Square>> squaresList) {
 		this.squaresList = squaresList;
-		this.isSolved = false;
 	}
 
 	public Board() {
