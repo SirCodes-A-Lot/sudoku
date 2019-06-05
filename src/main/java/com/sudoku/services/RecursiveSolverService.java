@@ -31,7 +31,7 @@ public class RecursiveSolverService {
 			return board;
 		} else {
 			//Slice and dice
-			
+			sliceAndDiceService.sliceAndDice(board);
 			//exclusiveOptions
 			
 			//if progress made

@@ -74,7 +74,7 @@ public class Board {
 		ArrayList<Square> box = new ArrayList<>();
 		for (int rowNumber = startRow; rowNumber < startRow + 3; rowNumber++) {
 			ArrayList<Square> row = squaresList.get(rowNumber);
-			for (int columnNumber = startColumn; columnNumber < startColumn + 3; startColumn++) {
+			for (int columnNumber = startColumn; columnNumber < startColumn + 3; columnNumber++) {
 				box.add(row.get(columnNumber));
 			}
 		}
