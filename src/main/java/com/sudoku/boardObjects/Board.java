@@ -20,9 +20,9 @@ public class Board {
 	public void setBoardFromListOfStringValues(ArrayList<String>values) {
 		int count = 0;
 		squaresList = new ArrayList<>();
-		for (int rowNumber = 0; rowNumber < 10; rowNumber++) {
+		for (int rowNumber = 0; rowNumber < 9; rowNumber++) {
 			ArrayList<Square> row = new ArrayList<>();
-			for (int columnNumber = 0; columnNumber < 10; columnNumber++) {
+			for (int columnNumber = 0; columnNumber < 9; columnNumber++) {
 				String value = values.get(count);
 				if (value == "") {
 					row.add(new Square(rowNumber, columnNumber));
@@ -31,6 +31,7 @@ public class Board {
 				}
 				count +=1;
 			}
+			squaresList.add(row);
 		}
 	}
 	
