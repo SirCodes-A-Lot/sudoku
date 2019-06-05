@@ -91,4 +91,21 @@ public class Board {
 		}
 		return boardValues;
 	}
+
+	public ArrayList<Square> getAllUnsetSquares() {
+		ArrayList<Square> unsetSquares = new ArrayList<>();
+		for (int rowNumber = 0; rowNumber < 9; rowNumber++) {
+			for (int columnNumber = 0; columnNumber < 9; columnNumber++) {
+				Square square = getSquare(rowNumber, columnNumber);
+				if (!square.isSet()) {
+					unsetSquares.add(square);
+				}
+			}
+		}
+		if (unsetSquares.size() == 0) {
+			System.out.println("ERROR: get all unset squares called, but squares all set");
+			System.out.println(getBoardAsListOfStringValues());
+		}
+		return unsetSquares;
+	}
 }
