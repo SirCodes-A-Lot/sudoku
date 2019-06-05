@@ -1,6 +1,6 @@
 package com.sudoku.constants;
 
-public class Constants {
+public class SudokuConstants {
 	
 	public static String VALUE_SET = "value set";
 	

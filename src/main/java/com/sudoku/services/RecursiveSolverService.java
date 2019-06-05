@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sudoku.boardObjects.Board;
-import com.sudoku.constants.Constants;
+import com.sudoku.constants.SudokuConstants;
 
 @Service
 public class RecursiveSolverService {
@@ -21,7 +21,7 @@ public class RecursiveSolverService {
 	public ArrayList<String> solveBoardFromStringArray(ArrayList<String> inputBoardValues) {
 		Board board = new Board();
 		board.setBoardFromListOfStringValues(inputBoardValues);
-		solveRecursively(board, Constants.MAX_RECURSIONS);
+		solveRecursively(board, SudokuConstants.MAX_RECURSIONS);
 		ArrayList<String> outputBoardValues = board.getBoardAsListOfStringValues();
 		return outputBoardValues;
 	}

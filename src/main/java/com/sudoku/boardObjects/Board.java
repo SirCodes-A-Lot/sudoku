@@ -1,6 +1,9 @@
 package com.sudoku.boardObjects;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class Board {
 
@@ -78,6 +81,12 @@ public class Board {
 		return box;
 	}
 	
+	public ArrayList<Square> getBoxContainingCoOrdinates(int row, int column) {
+		int startRow = row/3;
+		int startColumn = column/3;
+		return getBox (startRow, startColumn);
+	}
+	
 	public Square getSquare(int rowNumber, int columnNumber) {
 		return squaresList.get(rowNumber).get(columnNumber);
 	}
@@ -107,5 +116,28 @@ public class Board {
 			System.out.println(getBoardAsListOfStringValues());
 		}
 		return unsetSquares;
+	}
+	
+	public Set<Integer> getAdjacentSetSquareValues(Square square) {
+		Set<Square> adjacentSquares = getAdjacentSquares(square);
+		Set<Integer> adjacentSetSquareValues = new HashSet<>();
+		Iterator<Square> iterator = adjacentSquares.iterator();
+		while (iterator.hasNext()) {
+			Square adjacentSquare = iterator.next();
+			if (adjacentSquare.isSet()) {
+				adjacentSetSquareValues.add(adjacentSquare.getValue());
+			}
+		}
+		return adjacentSetSquareValues;
+	}
+	
+	private Set<Square> getAdjacentSquares(Square square) {
+		Set<Square> adjacentSquares = new HashSet<>();
+		int squareRow = square.getRow();
+		int squareColumn = square.getColumn();
+		adjacentSquares.addAll(getBoxContainingCoOrdinates(squareRow, squareColumn));
+		adjacentSquares.addAll(getRow(squareRow));
+		adjacentSquares.addAll(getColumn(squareColumn));
+		return adjacentSquares;
 	}
 }

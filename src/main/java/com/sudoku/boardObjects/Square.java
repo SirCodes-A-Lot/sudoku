@@ -1,11 +1,10 @@
 package com.sudoku.boardObjects;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import com.sudoku.constants.Constants;
+import com.sudoku.constants.SudokuConstants;
 
 public class Square {
 	
@@ -42,6 +41,14 @@ public class Square {
 		this.isSet = true;
 	}
 	
+	public int getRow() {
+		return row;
+	}
+
+	public int getColumn() {
+		return column;
+	}
+
 	public Set<Integer> getOptions() {
 		return options;
 	}
@@ -54,28 +61,22 @@ public class Square {
 		return isSet;
 	}
 	
-	public String removeOptionsReportOutcome(ArrayList<Integer> optionsToRemove) {
+	public String removeOptionsReportOutcome(Set<Integer> optionsToRemove) {
 		if (isSet) {
-			return Constants.SQUARE_ALREADY_SET;
+			return SudokuConstants.SQUARE_ALREADY_SET;
 		}
-		boolean optionsRemoved = false;
-		for (int i = 0; i < optionsToRemove.size(); i++) {
-			boolean isRemoved = options.remove(optionsToRemove.get(i));
-			if (isRemoved) {
-				optionsRemoved = true;
-			}
-		}
+		boolean optionsRemoved = options.removeAll(optionsToRemove);
 		if (options.isEmpty()) {
-			return Constants.NO_OPTIONS;
+			return SudokuConstants.NO_OPTIONS;
 		} else if (options.size() == 1) {
 			Iterator<Integer> iterator = options.iterator();
 			int value = iterator.next();
 			setValue(value);
-			return Constants.VALUE_SET;
+			return SudokuConstants.VALUE_SET;
 		} else if (optionsRemoved) {
-			return Constants.OPTIONS_REMOVED;
+			return SudokuConstants.OPTIONS_REMOVED;
 		} else {
-			return Constants.NO_OPTIONS_REMOVED;
+			return SudokuConstants.NO_OPTIONS_REMOVED;
 		}
 	}
 }
