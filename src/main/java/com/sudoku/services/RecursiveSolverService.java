@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sudoku.boardObjects.Board;
+import com.sudoku.constants.Constants;
 
 @Service
 public class RecursiveSolverService {
 	
 	private SliceAndDiceService sliceAndDiceService;
-	
-	private int MAX_RECURSIONS = 100;
 	
 	@Autowired
 	public RecursiveSolverService(SliceAndDiceService sliceAndDiceService) {
@@ -22,7 +21,7 @@ public class RecursiveSolverService {
 	public ArrayList<String> solveBoardFromStringArray(ArrayList<String> inputBoardValues) {
 		Board board = new Board();
 		board.setBoardFromListOfStringValues(inputBoardValues);
-		solveRecursively(board, MAX_RECURSIONS);
+		solveRecursively(board, Constants.MAX_RECURSIONS);
 		ArrayList<String> outputBoardValues = board.getBoardAsListOfStringValues();
 		return outputBoardValues;
 	}
