@@ -23,7 +23,7 @@ public class Square {
 		this.column = column;
 		this.isSet = false;
 		this.options = new HashSet<Integer>();
-		for (int i = 0; i < 10 ; i++) {
+		for (int i = 1; i < 10 ; i++) {
 			this.options.add(i);
 		}
 	}
@@ -70,11 +70,14 @@ public class Square {
 			return SudokuConstants.SQUARE_ALREADY_SET;
 		}
 		boolean optionsRemoved = options.removeAll(optionsToRemove);
+		System.out.println(options.size());
 		if (options.isEmpty()) {
 			return SudokuConstants.NO_OPTIONS;
 		} else if (options.size() == 1) {
+			System.out.println("setting square value");
 			Iterator<Integer> iterator = options.iterator();
 			int value = iterator.next();
+			System.out.println(value);
 			setValue(value);
 			return SudokuConstants.VALUE_SET;
 		} else if (optionsRemoved) {
