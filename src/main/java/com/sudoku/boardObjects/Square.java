@@ -70,7 +70,6 @@ public class Square {
 			return SudokuConstants.SQUARE_ALREADY_SET;
 		}
 		boolean optionsRemoved = options.removeAll(optionsToRemove);
-		System.out.println(options.size());
 		if (options.isEmpty()) {
 			return SudokuConstants.NO_OPTIONS;
 		} else if (options.size() == 1) {

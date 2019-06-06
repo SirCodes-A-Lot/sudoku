@@ -84,8 +84,9 @@ public class Board {
 	}
 	
 	public ArrayList<Square> getBoxContainingCoOrdinates(int row, int column) {
-		int startRow = row/3;
-		int startColumn = column/3;
+		int startRow = (row/3)*3;
+		int startColumn = (column/3)*3;
+		System.out.println(startRow + " " + startColumn);
 		return getBox (startRow, startColumn);
 	}
 	
@@ -97,7 +98,13 @@ public class Board {
 		ArrayList<String> boardValues = new ArrayList<>();
 		for (int rowNumber = 0; rowNumber < 9; rowNumber++) {
 			for (int columnNumber = 0; columnNumber < 9; columnNumber++) {
-				boardValues.add(Integer.toString(getSquare(rowNumber, columnNumber).getValue()));
+				Square square = getSquare(rowNumber, columnNumber);
+				if (square.isSet()) {
+					boardValues.add(Integer.toString(square.getValue()));
+				} else {
+					boardValues.add("");
+				}
+				
 			}
 		}
 		return boardValues;
