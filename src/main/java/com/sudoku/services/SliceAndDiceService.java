@@ -17,7 +17,6 @@ public class SliceAndDiceService {
 		ArrayList<Square> squaresToBeSolvedQueue = board.getAllUnsetSquares();
 		//iterate through queue
 		while (!squaresToBeSolvedQueue.isEmpty()) {
-			System.out.print("here");
 			Square squareToSolve = squaresToBeSolvedQueue.get(0);
 			squaresToBeSolvedQueue.remove(0);
 			String outcomeFromRemoveOptions = removeOptionsFromSquare(board, squareToSolve);

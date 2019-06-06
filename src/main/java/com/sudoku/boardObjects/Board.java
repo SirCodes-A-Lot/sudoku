@@ -28,7 +28,8 @@ public class Board {
 			for (int columnNumber = 0; columnNumber < 9; columnNumber++) {
 				String value = values.get(count);
 				if (value == "") {
-					row.add(new Square(rowNumber, columnNumber));
+					Square square = new Square(rowNumber, columnNumber);
+					row.add(square);
 				} else {
 					row.add(new Square(rowNumber, columnNumber, Integer.parseInt(value)));
 				}
@@ -36,6 +37,7 @@ public class Board {
 			}
 			squaresList.add(row);
 		}
+		System.out.println(getBoardAsListOfStringValues());
 	}
 	
 	public boolean isSolved() {

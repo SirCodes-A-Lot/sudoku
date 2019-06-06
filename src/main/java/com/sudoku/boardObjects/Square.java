@@ -19,6 +19,8 @@ public class Square {
 	private boolean isSet;
 	
 	public Square(int row, int column) {
+		this.row = row;
+		this.column = column;
 		this.isSet = false;
 		this.options = new HashSet<Integer>();
 		for (int i = 0; i < 10 ; i++) {
@@ -27,6 +29,8 @@ public class Square {
 	}
 
 	public Square(int row, int column, int value) {
+		this.row = row;
+		this.column = column;
 		this.value = value;
 		this.isSet = true;
 		
