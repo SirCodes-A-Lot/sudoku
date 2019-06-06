@@ -86,7 +86,6 @@ public class Board {
 	public ArrayList<Square> getBoxContainingCoOrdinates(int row, int column) {
 		int startRow = (row/3)*3;
 		int startColumn = (column/3)*3;
-		System.out.println(startRow + " " + startColumn);
 		return getBox (startRow, startColumn);
 	}
 	

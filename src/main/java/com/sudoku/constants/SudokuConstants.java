@@ -12,6 +12,6 @@ public class SudokuConstants {
 	
 	public static String SQUARE_ALREADY_SET = "square already set";
 	
-	public static int MAX_RECURSIONS = 1;
+	public static int MAX_RECURSIONS = 10;
 
 }
