@@ -14,6 +14,7 @@ import com.sudoku.constants.SudokuConstants;
 public class SliceAndDiceService {
 	
 	public String sliceAndDice (Board board) {
+		System.out.println("--- begin slice and dice round ---");
 		String sliceAndDiceOutcome = SudokuConstants.NO_OPTIONS_REMOVED;
 		ArrayList<Square> squaresToBeSolvedQueue = board.getAllUnsetSquares();
 		//iterate through queue
@@ -32,9 +33,11 @@ public class SliceAndDiceService {
 				break;
 			} else if (outcomeFromRemoveOptions == SudokuConstants.SQUARE_ALREADY_SET) {
 				//happens when adjacent unset square was already in queue, no action needed.
-				//TODO turn squares to be solved queue into a set and avoid this outcome.
+				//TODO turn squares to be solved queue into a set and avoid this outcome, report error here once done.
 			}
 		}
+
+		System.out.println("--- end slice and dice round. outcome is: " + sliceAndDiceOutcome);
 		return sliceAndDiceOutcome;
 	}
 	
