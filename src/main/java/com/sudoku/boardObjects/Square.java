@@ -73,10 +73,9 @@ public class Square {
 		if (options.isEmpty()) {
 			return SudokuConstants.BOARD_IS_UNSOLVABLE;
 		} else if (options.size() == 1) {
-			System.out.println("setting square value");
 			Iterator<Integer> iterator = options.iterator();
 			int value = iterator.next();
-			System.out.println(value);
+			System.out.println("setting square coords: " + row + "," + column + " value: " + value);
 			setValue(value);
 			return SudokuConstants.VALUE_SET;
 		} else if (optionsRemoved) {
