@@ -13,6 +13,6 @@ public class SudokuConstants {
 	public static String SQUARE_ALREADY_SET = "square already set";
 	
 	//50 is enough to fill a blank board
-	public static int MAX_GUESSES = 50;
+	public static int MAX_GUESSES = 200;
 
 }
