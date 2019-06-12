@@ -71,7 +71,7 @@ public class Square {
 		}
 		boolean optionsRemoved = options.removeAll(optionsToRemove);
 		if (options.isEmpty()) {
-			return SudokuConstants.NO_OPTIONS;
+			return SudokuConstants.BOARD_IS_UNSOLVABLE;
 		} else if (options.size() == 1) {
 			System.out.println("setting square value");
 			Iterator<Integer> iterator = options.iterator();

@@ -4,7 +4,7 @@ public class SudokuConstants {
 	
 	public static String VALUE_SET = "value set";
 	
-	public static String NO_OPTIONS = "no options";
+	public static String BOARD_IS_UNSOLVABLE = "board is unsolveable";
 	
 	public static String OPTIONS_REMOVED = "options removed";
 	
