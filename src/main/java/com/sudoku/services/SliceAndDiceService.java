@@ -1,6 +1,7 @@
 package com.sudoku.services;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import com.sudoku.constants.SudokuConstants;
 @Service
 public class SliceAndDiceService {
 	
-	public Board sliceAndDice (Board board) {
+	public String sliceAndDice (Board board) {
 		String sliceAndDiceOutcome = SudokuConstants.NO_OPTIONS_REMOVED;
 		ArrayList<Square> squaresToBeSolvedQueue = board.getAllUnsetSquares();
 		//iterate through queue
@@ -21,13 +22,20 @@ public class SliceAndDiceService {
 			squaresToBeSolvedQueue.remove(0);
 			String outcomeFromRemoveOptions = removeOptionsFromSquare(board, squareToSolve);
 			if (outcomeFromRemoveOptions == SudokuConstants.VALUE_SET) {
-				//Add all unsolved adjacent squares to queue
+				sliceAndDiceOutcome = SudokuConstants.OPTIONS_REMOVED;
+				squaresToBeSolvedQueue.addAll(board.getAdjacentUnsetSquares(squareToSolve));
+			} else if (outcomeFromRemoveOptions == SudokuConstants.OPTIONS_REMOVED) {
+				sliceAndDiceOutcome = SudokuConstants.OPTIONS_REMOVED;
+			} else if (outcomeFromRemoveOptions == SudokuConstants.BOARD_IS_UNSOLVABLE) {
+				board.setUnsolvable(true);
+				sliceAndDiceOutcome = SudokuConstants.BOARD_IS_UNSOLVABLE;
+				break;
+			} else if (outcomeFromRemoveOptions == SudokuConstants.SQUARE_ALREADY_SET) {
+				//happens when adjacent unset square was already in queue, no action needed.
+				//TODO turn squares to be solved queue into a set and avoid this outcome.
 			}
-			//handle other outcomes
 		}
-		//remove options
-		//add adjacent squares to queue
-		return board;
+		return sliceAndDiceOutcome;
 	}
 	
 	private String removeOptionsFromSquare(Board board, Square square) {
