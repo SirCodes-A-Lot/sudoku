@@ -33,7 +33,7 @@ public class SliceAndDiceService {
 				break;
 			} else if (outcomeFromRemoveOptions == SudokuConstants.SQUARE_ALREADY_SET) {
 				//happens when adjacent unset square was already in queue, no action needed.
-				//TODO turn squares to be solved queue into a set and avoid this outcome, report error here once done.
+				//could do turn squares to be solved queue into a set and avoid this outcome, report error here once done.
 			}
 		}
 

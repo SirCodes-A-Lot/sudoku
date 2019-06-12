@@ -43,7 +43,7 @@ public class RecursiveSolverService {
 			String sliceAndDiceOutcome = sliceAndDiceService.sliceAndDice(board);
 			System.out.println("Is board solved: " + board.isSolved());
 			System.out.println("board: " + board.getBoardAsListOfStringValues());
-			//pointing pair plus
+			//pointing pair plus could go here
 			//if progress made cycle slice and dice and pointing pair plus by calling solve recursively here
 			if (board.isSolved() || board.isUnsolvable()) {
 				return board;
