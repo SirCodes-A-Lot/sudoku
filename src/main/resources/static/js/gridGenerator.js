@@ -13,6 +13,12 @@ function populateGrid(grid) {
             square.type = "text";
             square.maxLength = "1";
             square.className = "square";
+            if (j == 2 || j == 5) {
+            	square.className += " rightBorder"
+            }
+            if (i == 2 || i == 5) {
+            	square.className += " bottomBorder"
+            }
             square.id = "square" + count;
             row.appendChild(square);
             count +=1;
