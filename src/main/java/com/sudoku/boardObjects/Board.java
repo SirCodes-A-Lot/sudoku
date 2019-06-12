@@ -41,11 +41,12 @@ public class Board {
 	}
 	
 	public boolean isSolved() {
+		if (!isSolved) {
+			if (getAllUnsetSquares().isEmpty()) {
+				isSolved = true;
+			}
+		}
 		return isSolved;
-	}
-
-	public void setSolved(boolean isSolved) {
-		this.isSolved = isSolved;
 	}
 
 	public boolean isUnsolvable() {
@@ -120,8 +121,8 @@ public class Board {
 			}
 		}
 		if (unsetSquares.size() == 0) {
-			System.out.println("ERROR: get all unset squares called, but squares all set");
-			System.out.println(getBoardAsListOfStringValues());
+			isSolved = true;
+			System.out.println("get all unset squares called, but squares all set");
 		}
 		return unsetSquares;
 	}
@@ -147,5 +148,18 @@ public class Board {
 		adjacentSquares.addAll(getRow(squareRow));
 		adjacentSquares.addAll(getColumn(squareColumn));
 		return adjacentSquares;
+	}
+
+	public Set<Square> getAdjacentUnsetSquares(Square square) {
+		Set<Square> adjacentSquares = getAdjacentSquares(square);
+		Set<Square> adjacentUnsetSquares = new HashSet<>();
+		Iterator<Square> iterator = adjacentSquares.iterator();
+		while (iterator.hasNext()) {
+			Square adjacentSquare = iterator.next();
+			if (!adjacentSquare.isSet()) {
+				adjacentUnsetSquares.add(adjacentSquare);
+			}
+		}
+		return adjacentUnsetSquares;
 	}
 }
