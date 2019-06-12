@@ -122,7 +122,7 @@ public class Board {
 		}
 		if (unsetSquares.size() == 0) {
 			isSolved = true;
-			System.out.println("get all unset squares called, but squares all set");
+			System.out.println("get all unset squares called, and squares all set");
 		}
 		return unsetSquares;
 	}
@@ -161,5 +161,28 @@ public class Board {
 			}
 		}
 		return adjacentUnsetSquares;
+	}
+	
+	public Square getSquareWithFewestOptions() {
+		int fewestOptions = 2;
+		Square squareWithFewestOptions = null;
+		while (squareWithFewestOptions == null) {
+			Iterator<Square> squareIterator = getAllUnsetSquares().iterator();
+			while (squareIterator.hasNext()) {
+				Square square = squareIterator.next();
+				if (square.getOptions().size() == fewestOptions) {
+					return square;
+				}
+			}
+			fewestOptions += 1;
+			if (fewestOptions > 9) {
+				System.out.println("ERROR: Failed to get square with fewest options.");
+				return null;
+			}
+			
+		}
+		//this should never be reached
+		System.out.println("ERROR: Failed to get square with fewest options, reached final return.");
+		return null;
 	}
 }
