@@ -7,7 +7,7 @@ import com.sudoku.boardObjects.Board;
 @Service
 public class BoardCloneService {
 	
-	public static Board cloneBoard(Board board) {
+	public Board cloneBoard(Board board) {
 		if (board.isUnsolvable() || board.isSolved()) {
 			System.out.println("ERROR: trying to clone board that is solved or unsolveable");
 			return null;
