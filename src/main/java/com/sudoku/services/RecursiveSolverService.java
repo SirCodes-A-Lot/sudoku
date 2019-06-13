@@ -15,24 +15,34 @@ public class RecursiveSolverService {
 	
 	private int guesses;
 	
+	private BoardValidatorService boardValidatorService;
+	
 	private SliceAndDiceService sliceAndDiceService;
 	
 	private BoardCloneService boardCloneService;
 	
+	
+	
 	@Autowired
-	public RecursiveSolverService(SliceAndDiceService sliceAndDiceService, 
+	public RecursiveSolverService(BoardValidatorService boardValidatorService,
+			SliceAndDiceService sliceAndDiceService, 
 			BoardCloneService boardCloneService) {
 		this.sliceAndDiceService = sliceAndDiceService;
 		this.boardCloneService = boardCloneService;
+		this.boardValidatorService = boardValidatorService;
 	}
 	
 	public ArrayList<String> solveBoardFromStringArray(ArrayList<String> inputBoardValues) {
 		guesses = SudokuConstants.MAX_GUESSES;
 		Board board = new Board();
+		Board outputBoard;
 		board.setBoardFromListOfStringValues(inputBoardValues);
-		Board outputBoard = solveRecursively(board);
-		ArrayList<String> outputBoardValues = outputBoard.getBoardAsListOfStringValues();
-		return outputBoardValues;
+		if (boardValidatorService.isSudokuGridValid(board)) {
+			outputBoard = solveRecursively(board);
+		} else {
+			outputBoard = board;
+		}
+		return outputBoard.getBoardAsListOfStringValues();
 	}
 
 	private Board solveRecursively(Board board) {
@@ -62,7 +72,7 @@ public class RecursiveSolverService {
 			}
 			guesses -=1;
 			Integer option = optionsIterator.next();
-			Board cloneBoard = BoardCloneService.cloneBoard(board);
+			Board cloneBoard = boardCloneService.cloneBoard(board);
 			Square cloneTargetSquare = cloneBoard.getSquare(targetSquare.getRow(), targetSquare.getColumn());
 			cloneTargetSquare.setValue(option);
 			outcomeBoardAfterTryingToSolve = solveRecursively(cloneBoard);
