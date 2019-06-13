@@ -127,13 +127,29 @@ public class Board {
 		return unsetSquares;
 	}
 	
+	public ArrayList<Square> getAllSetSquares() {
+		ArrayList<Square> setSquares = new ArrayList<>();
+		for (int rowNumber = 0; rowNumber < 9; rowNumber++) {
+			for (int columnNumber = 0; columnNumber < 9; columnNumber++) {
+				Square square = getSquare(rowNumber, columnNumber);
+				if (square.isSet()) {
+					setSquares.add(square);
+				}
+			}
+		}
+		if (setSquares.size() == 81) {
+			isSolved = true;
+		}
+		return setSquares;
+	}
+	
 	public Set<Integer> getAdjacentSetSquareValues(Square square) {
 		Set<Square> adjacentSquares = getAdjacentSquares(square);
 		Set<Integer> adjacentSetSquareValues = new HashSet<>();
 		Iterator<Square> iterator = adjacentSquares.iterator();
 		while (iterator.hasNext()) {
 			Square adjacentSquare = iterator.next();
-			if (adjacentSquare.isSet()) {
+			if (adjacentSquare.isSet() && adjacentSquare != square) {
 				adjacentSetSquareValues.add(adjacentSquare.getValue());
 			}
 		}
@@ -147,6 +163,7 @@ public class Board {
 		adjacentSquares.addAll(getBoxContainingCoOrdinates(squareRow, squareColumn));
 		adjacentSquares.addAll(getRow(squareRow));
 		adjacentSquares.addAll(getColumn(squareColumn));
+		adjacentSquares.remove(square);
 		return adjacentSquares;
 	}
 
@@ -156,7 +173,7 @@ public class Board {
 		Iterator<Square> iterator = adjacentSquares.iterator();
 		while (iterator.hasNext()) {
 			Square adjacentSquare = iterator.next();
-			if (!adjacentSquare.isSet()) {
+			if (!adjacentSquare.isSet() && adjacentSquare != square) {
 				adjacentUnsetSquares.add(adjacentSquare);
 			}
 		}
@@ -179,7 +196,6 @@ public class Board {
 				System.out.println("ERROR: Failed to get square with fewest options.");
 				return null;
 			}
-			
 		}
 		//this should never be reached
 		System.out.println("ERROR: Failed to get square with fewest options, reached final return.");
